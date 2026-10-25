@@ -438,12 +438,14 @@ export function WorkspaceSettingsModal({
   moveDimensionsEnabled,
   originDimensionsEnabled,
   startInPerspective,
+  codexAssistantEnabled,
   onWorkspaceChange,
   onSnapChange,
   onThemePreferenceChange,
   onMoveDimensionsEnabledChange,
   onOriginDimensionsEnabledChange,
   onStartInPerspectiveChange,
+  onCodexAssistantEnabledChange,
   hasStartView,
   onSaveStartView,
   onResetStartView,
@@ -456,12 +458,14 @@ export function WorkspaceSettingsModal({
   moveDimensionsEnabled: boolean;
   originDimensionsEnabled: boolean;
   startInPerspective: boolean;
+  codexAssistantEnabled: boolean;
   onWorkspaceChange: (next: WorkspaceSettings) => void;
   onSnapChange: (next: GridSize) => void;
   onThemePreferenceChange?: (preference: AppThemePreference) => void;
   onMoveDimensionsEnabledChange: (enabled: boolean) => void;
   onOriginDimensionsEnabledChange: (enabled: boolean) => void;
   onStartInPerspectiveChange: (perspective: boolean) => void;
+  onCodexAssistantEnabledChange: (enabled: boolean) => void;
   /** Whether a start view of the user's own is set (#853). */
   hasStartView: boolean;
   onSaveStartView: () => void;
@@ -883,6 +887,11 @@ export function WorkspaceSettingsModal({
                     label={t("workspace.startInPerspective")}
                     checked={startInPerspective}
                     onChange={onStartInPerspectiveChange}
+                  />
+                  <WorkspaceToggle
+                    label={t("workspace.codexAssistantEnabled")}
+                    checked={codexAssistantEnabled}
+                    onChange={onCodexAssistantEnabledChange}
                   />
                   <div className="workspace-reset-row" data-help={t("workspace.startViewHint")}>
                     <span>{t("workspace.startView")}</span>

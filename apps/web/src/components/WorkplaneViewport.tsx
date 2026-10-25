@@ -99,6 +99,7 @@ const ORIGIN_DIMENSIONS_ENABLED_STORAGE_KEY = "layerling.editor.originDimensions
 // preference like the two above, not a design setting - it has to hold for
 // every design, including ones saved before it existed.
 const START_IN_PERSPECTIVE_STORAGE_KEY = "layerling.editor.startInPerspective";
+const CODEX_ASSISTANT_ENABLED_STORAGE_KEY = "layerling.codexAssistant.enabled";
 const CORNER_RULER_DEFAULT_ARM_X = 100;
 const CORNER_RULER_DEFAULT_ARM_Z = 80;
 // A height is no longer held to the 220 mm of the old plate: the plate sets how far the sliders reach, the guard is for a typo (#425).
@@ -1480,6 +1481,7 @@ export function WorkplaneViewport({
   const [originDimensionOverlay, setOriginDimensionOverlay] = useState<OriginDimensionOverlayData | null>(null);
   const [originDimensionsEnabled, setOriginDimensionsEnabled] = useState(true);
   const [startInPerspective, setStartInPerspective] = useState(true);
+  const [codexAssistantEnabled, setCodexAssistantEnabled] = useState(false);
   const [hasStartView, setHasStartView] = useState(() => readStartView() !== null);
   const [sectionViewOpen, setSectionViewOpen] = useState(false);
   const [sectionSettings, setSectionSettings] = useState<SectionPlaneSettings>(DEFAULT_SECTION_SETTINGS);
@@ -1935,6 +1937,16 @@ export function WorkplaneViewport({
     } catch {
       // Without storage the next design still opens the way it always did.
     }
+  }, []);
+
+  const changeCodexAssistantEnabled = useCallback((enabled: boolean) => {
+    setCodexAssistantEnabled(enabled);
+    try { window.localStorage.setItem(CODEX_ASSISTANT_ENABLED_STORAGE_KEY, String(enabled)); } catch { /* Applies for this editor session. */ }
+    window.dispatchEvent(new CustomEvent("layerling:codex-assistant-enabled", { detail: enabled }));
+  }, []);
+
+  useEffect(() => {
+    try { setCodexAssistantEnabled(window.localStorage.getItem(CODEX_ASSISTANT_ENABLED_STORAGE_KEY) === "true"); } catch { /* Leave the assistant disabled. */ }
   }, []);
 
   const changeOriginDimensionsEnabled = useCallback((enabled: boolean) => {
@@ -7846,12 +7858,14 @@ export function WorkplaneViewport({
           moveDimensionsEnabled={moveDimensionsEnabled}
           originDimensionsEnabled={originDimensionsEnabled}
           startInPerspective={startInPerspective}
+          codexAssistantEnabled={codexAssistantEnabled}
           onWorkspaceChange={changeWorkspace}
           onSnapChange={chooseSnapGrid}
           onThemePreferenceChange={onThemePreferenceChange}
           onMoveDimensionsEnabledChange={changeMoveDimensionsEnabled}
           onOriginDimensionsEnabledChange={changeOriginDimensionsEnabled}
           onStartInPerspectiveChange={changeStartInPerspective}
+          onCodexAssistantEnabledChange={changeCodexAssistantEnabled}
           hasStartView={hasStartView}
           onSaveStartView={saveStartView}
           onResetStartView={resetStartView}

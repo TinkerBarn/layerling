@@ -119,3 +119,18 @@ Umetna inteligenca se tako lahko sama preverja: nekaj ustvari, posname sliko, po
 Rečeš: »Zgradi mi okroglo škatlo s premerom 60 mm, višino 40 mm in steno 2,5 mm, zgoraj odprto, poleg tega ploski pokrov, na katerem je v loku napisano ›Čaj‹.« Umetna inteligenca ustvari valje, enega izdolbe, ukrivljeno besedilo postavi na pokrov in na koncu posname slike, da vidi, ali ustreza.
 
 > **Namig:** Umetni inteligenci daj konkretne mere in ji povej, čemu je del namenjen (»držalo za palico 12 mm, ustreza Bambu Lab A1«). Potem sprejema smiselnejše odločitve. In ji pri gradnji gledaj: kadarkoli lahko posežeš sam, saj je to isti urejevalnik.
+
+## Vklop klepeta ChatGPT v urejevalniku
+
+Vgrajeni klepet ChatGPT je prototip za razvoj. Potrebuješ delovno kopijo Layerlinga s to funkcijo, Node.js `22.18` ali novejši in Codex CLI. V Codex se prijavi z računom ChatGPT; ključ API ni potreben. Celoten postopek namestitve, uradne povezave za prenos in ločena navodila za [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) ter [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) so v [navodilih za namestitev](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+Klepet v urejevalniku prikažeš tako:
+
+1. Zaženi razvojni strežnik Layerlinga v mapi projekta. Če ga zaženeš na vratih `3001`, kot je opisano v navodilih, odpri [http://localhost:3001](http://localhost:3001).
+2. V urejevalniku odpri ali ustvari načrt.
+3. V zgornji orodni vrstici v skupini {{ui:editor.group.manage}} klikni zobnik.
+4. Odpri {{ui:editor.workspaceSettings}} in izberi {{ui:workspace.appearance}}.
+5. Vklopi {{ui:workspace.codexAssistantEnabled}} in zapri nastavitve.
+6. Klikni ikono {{ui:codexAssistant.title}}, da odpreš klepet. Če se prikaže poziv, se prijavi z računom ChatGPT.
+
+Ikona se prikaže le, če je ta nastavitev vklopljena, je povezan lokalni urejevalnik in Layerling najde Codex CLI. Ta lokalna funkcija deluje samo z razvojnim strežnikom na istem računalniku; na layerling.com, pri statičnem gostovanju in v Dockerjevi namestitvi je izklopljena. Če ikone ni ali se prikaže napaka MCP, preberi [navodila za namestitev in odpravljanje težav](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

@@ -6,6 +6,18 @@ export function isLocalRequest(request: Request) {
     return false;
   }
 
+  // Next may normalize request.url to localhost in dev mode, even when the
+  // incoming Host header names a remote site. Check the actual authority too;
+  // the URL object alone is not a reliable loopback check behind that rewrite.
+  const hostHeader = request.headers.get("host");
+  if (!hostHeader) return false;
+  try {
+    const hostUrl = new URL(`${requestUrl.protocol}//${hostHeader}`);
+    if (!LOCAL_HOSTS.has(hostUrl.hostname) || (hostUrl.port && requestUrl.port && hostUrl.port !== requestUrl.port)) return false;
+  } catch {
+    return false;
+  }
+
   const origin = request.headers.get("origin");
   if (origin) {
     try {

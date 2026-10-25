@@ -125,3 +125,18 @@ That lets the AI check itself: it creates something, takes a picture, looks and 
 You say: "Build me a round box 60 mm across, 40 mm high with a 2.5 mm wall, open at the top, plus a flat lid with 'Tea' written in an arc." The AI creates the cylinders, hollows one, puts the curved text on the lid and takes pictures at the end to see whether it fits.
 
 > **Tip:** Give the AI concrete dimensions and tell it what the part is for ("holder for a 12 mm rod, fits a Bambu Lab A1"). Then it makes more sensible decisions. And watch it build: you can step in yourself at any time, because it is the same editor.
+
+## Use ChatGPT Chat in the editor
+
+The integrated ChatGPT chat is a development prototype. It needs a Layerling working copy that includes this feature, Node.js `22.18` or later, and Codex CLI. Sign in to Codex with your ChatGPT account; no API key is needed. The full setup, with official download links and separate steps for [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) and [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal), is in the [installation guide](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+To show the chat in the editor:
+
+1. Start the Layerling development server in the project folder. If you use port `3001` as in the guide, open [http://localhost:3001](http://localhost:3001).
+2. Open or create a design in the editor.
+3. In the top toolbar, under {{ui:editor.group.manage}}, click the gear button.
+4. Open {{ui:editor.workspaceSettings}} and choose {{ui:workspace.appearance}}.
+5. Turn on {{ui:workspace.codexAssistantEnabled}} and close the settings.
+6. Click the {{ui:codexAssistant.title}} icon to open the chat. If prompted, sign in with your ChatGPT account.
+
+The icon appears only when this setting is on, a local editor is connected, and Layerling can find Codex CLI. This local feature works only with the development server on the same computer; it is disabled on layerling.com, static hosting, and the Docker deployment. If the icon is missing or an MCP error appears, follow the [installation and troubleshooting guide](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

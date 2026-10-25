@@ -2,12 +2,20 @@ import { describe, expect, it } from "vitest";
 import { isLocalRequest } from "@/lib/layerlingMcpLocalRequest";
 
 function request(url: string, headers: Record<string, string> = {}) {
-  return new Request(url, { method: "POST", headers });
+  return new Request(url, { method: "POST", headers: { host: new URL(url).host, ...headers } });
 }
 
 describe("isLocalRequest", () => {
   it("accepts a request with no origin header", () => {
     expect(isLocalRequest(request("http://localhost:3000/api/layerling-mcp"))).toBe(true);
+  });
+
+  it("rejects a remote Host even if Next normalized request.url to localhost", () => {
+    expect(isLocalRequest(request("http://localhost:3000/api/codex-assistant", { host: "attacker.example:3000", "sec-fetch-site": "same-origin" }))).toBe(false);
+  });
+
+  it("rejects a Host header that names a different local port", () => {
+    expect(isLocalRequest(request("http://localhost:3000/api/codex-assistant", { host: "localhost:4000" }))).toBe(false);
   });
 
   it("accepts a matching localhost origin", () => {

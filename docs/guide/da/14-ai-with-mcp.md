@@ -123,3 +123,18 @@ Det lader AI'en tjekke sig selv: den skaber noget, tager et billede, kigger og f
 Du siger: "Byg en rund kasse 60 mm tværs over, 40 mm høj med 2,5 mm væg, åben foroven, plus et fladt låg med 'Te' skrevet i en bue." AI'en skaber cylindre, udhuler den ene, lægger den buede tekst på låget og tager billeder til sidst for at se om det passer.
 
 > **Tip:** Giv AI'en konkrete dimensioner og fortæl hvad delen er til ("holder til en 12 mm stang, passer til en Bambu Lab A1"). Så træffer den bedre beslutninger. Og se den bygge: du kan selv gribe ind når som helst, fordi det er den samme editor.
+
+## Slå ChatGPT-chat til i editoren
+
+Den integrerede ChatGPT-chat er en prototype til udvikling. Du skal bruge en Layerling-arbejdskopi med funktionen, Node.js `22.18` eller nyere og Codex CLI. Log ind på Codex med din ChatGPT-konto; du behøver ingen API-nøgle. Den fulde opsætning med officielle downloadlinks og separate trin til [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) og [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) findes i [installationsvejledningen](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+Sådan viser du chatten i editoren:
+
+1. Start Layerlings udviklingsserver i projektmappen. Hvis du starter den på port `3001` som beskrevet i vejledningen, skal du åbne [http://localhost:3001](http://localhost:3001).
+2. Åbn eller opret et design i editoren.
+3. Klik på tandhjulet i gruppen {{ui:editor.group.manage}} på den øverste værktøjslinje.
+4. Åbn {{ui:editor.workspaceSettings}}, og vælg {{ui:workspace.appearance}}.
+5. Slå {{ui:workspace.codexAssistantEnabled}} til, og luk indstillingerne.
+6. Klik på ikonet {{ui:codexAssistant.title}} for at åbne chatten. Log ind med din ChatGPT-konto, hvis du bliver bedt om det.
+
+Ikonet vises kun, når indstillingen er slået til, en lokal editor er tilsluttet, og Layerling kan finde Codex CLI. Funktionen virker kun med udviklingsserveren på samme computer; den er slået fra på layerling.com, ved statisk hosting og i Docker-installationen. Hvis ikonet mangler, eller der vises en MCP-fejl, kan du følge [installations- og fejlfindingsvejledningen](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

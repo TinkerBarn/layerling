@@ -119,3 +119,18 @@ Cela permet à l’IA de s’auto-vérifier : elle crée quelque chose, prend un
 Vous dites : « Construisez-moi une boîte ronde de 60 mm de diamètre, 40 mm de haut avec une paroi de 2,5 mm, ouverte en haut, plus un couvercle plat avec « Thé » écrit en arc de cercle. L'IA crée les cylindres, en creuse un, place le texte incurvé sur le couvercle et prend des photos à la fin pour voir s'il rentre.
 
 > **Astuce :** Donnez à l'IA des dimensions concrètes et indiquez-lui à quoi sert la pièce ("support pour tige de 12 mm, s'adapte à un Bambu Lab A1"). Il prend alors des décisions plus judicieuses. Et regardez-le se développer : vous pouvez intervenir vous-même à tout moment, car c'est le même éditeur.
+
+## Activer le chat ChatGPT dans l’éditeur
+
+Le chat ChatGPT intégré est un prototype de développement. Il faut une copie de travail de Layerling qui comprend cette fonction, Node.js `22.18` ou une version ultérieure et Codex CLI. Connectez-vous à Codex avec votre compte ChatGPT ; aucune clé API n’est nécessaire. Le [guide d’installation](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md) contient la procédure complète, les liens de téléchargement officiels et des étapes distinctes pour [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) et [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal).
+
+Pour afficher le chat dans l’éditeur :
+
+1. Démarrez le serveur de développement Layerling dans le dossier du projet. Si vous le lancez sur le port `3001` comme indiqué dans le guide, ouvrez [http://localhost:3001](http://localhost:3001).
+2. Ouvrez ou créez un dessin dans l’éditeur.
+3. Dans la barre d’outils supérieure, cliquez sur la roue dentée du groupe {{ui:editor.group.manage}}.
+4. Ouvrez {{ui:editor.workspaceSettings}} et choisissez {{ui:workspace.appearance}}.
+5. Activez {{ui:workspace.codexAssistantEnabled}} puis fermez les paramètres.
+6. Cliquez sur l’icône {{ui:codexAssistant.title}} pour ouvrir le chat. Si nécessaire, connectez-vous avec votre compte ChatGPT.
+
+L’icône apparaît uniquement si cette option est activée, si un éditeur local est connecté et si Layerling trouve Codex CLI. Cette fonction locale ne marche qu’avec le serveur de développement sur le même ordinateur ; elle est désactivée sur layerling.com, en hébergement statique et dans le déploiement Docker. Si l’icône manque ou si une erreur MCP apparaît, consultez le [guide d’installation et de dépannage](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

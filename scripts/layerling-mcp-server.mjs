@@ -4,6 +4,8 @@ import { mkdir, rename, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, resolve as resolvePath } from "node:path";
 import { tools } from "./layerling-mcp-tools.mjs";
 import { isLocalBridgeUrl, openEditorAndWait } from "./layerling-mcp-open.mjs";
+import { negotiateMcpProtocolVersion } from "./layerling-mcp-protocol.mjs";
+import { ASSISTANT_DISABLED_TOOLS, toolsForCodexAssistant } from "./layerling-mcp-assistant-tools.mjs";
 
 const DEFAULT_BASE_URL = "http://127.0.0.1:3000";
 const MCP_ROUTE = "/api/layerling-mcp";
@@ -85,10 +87,14 @@ async function bridgeCommand(action, args = {}, defaultTimeoutMs = 15000) {
 }
 
 async function callTool(name, args) {
+  if (process.env.LAYERLING_MCP_ASSISTANT_MODE === "1" && ASSISTANT_DISABLED_TOOLS.has(name)) {
+    throw new Error(`The ${name} tool is disabled in the Layerling assistant to protect local files.`);
+  }
   switch (name) {
     case "layerling_list_editors":
       return bridgeGet();
     case "layerling_open_editor":
+      if (process.env.LAYERLING_MCP_OPEN_EDITOR === "0") throw new Error("Opening a new Layerling editor is disabled for this assistant. Open the editor yourself and retry.");
       return openEditorAndWait({ baseUrl, listEditors: bridgeGet });
     case "layerling_read_scene":
       return bridgeCommand("get_scene", args);
@@ -302,7 +308,7 @@ async function handleMessage(message) {
   try {
     if (method === "initialize") {
       sendResult(id, {
-        protocolVersion: params?.protocolVersion || "2024-11-05",
+        protocolVersion: negotiateMcpProtocolVersion(params?.protocolVersion),
         capabilities: { tools: {} },
         serverInfo: { name: "layerling-mcp", version: "0.1.0" },
       });
@@ -313,7 +319,7 @@ async function handleMessage(message) {
       return;
     }
     if (method === "tools/list") {
-      sendResult(id, { tools });
+      sendResult(id, { tools: process.env.LAYERLING_MCP_ASSISTANT_MODE === "1" ? toolsForCodexAssistant(tools) : tools });
       return;
     }
     if (method === "tools/call") {

@@ -119,3 +119,18 @@ AI tak může kontrolovat vlastní práci: něco vytvoří, pořídí snímek, v
 Můžete zadat: „Vytvoř kulatou krabičku o průměru 60 mm a výšce 40 mm, se stěnou 2,5 mm a otevřeným vrškem. Přidej ploché víčko s nápisem Čaj po oblouku.“ AI vytvoří válce, v jednom udělá dutinu, na víčko umístí obloukový text a snímky zkontroluje výsledek.
 
 > **Tip:** Zadávejte konkrétní rozměry a účel dílu, například „držák na tyč 12 mm, musí se vejít na Bambu Lab A1“. AI tak může lépe rozhodovat. Sledujte postup: kdykoliv můžete zasáhnout, protože pracujete ve stejném editoru.
+
+## Zapněte ChatGPT Chat v editoru
+
+Integrovaný chat ChatGPT je vývojový prototyp. Potřebujete pracovní kopii Layerlingu s touto funkcí, Node.js `22.18` nebo novější a Codex CLI. V Codexu se přihlaste ke svému účtu ChatGPT; klíč API není potřeba. Kompletní nastavení včetně oficiálních odkazů ke stažení a samostatných postupů pro [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) a [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) najdete v [instalační příručce](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+Chat v editoru zapnete takto:
+
+1. Spusťte vývojový server Layerlingu ve složce projektu. Pokud jej spouštíte na portu `3001` podle příručky, otevřete [http://localhost:3001](http://localhost:3001).
+2. Otevřete nebo vytvořte návrh v editoru.
+3. V horní liště nástrojů klikněte ve skupině {{ui:editor.group.manage}} na tlačítko s ozubeným kolem.
+4. Otevřete {{ui:editor.workspaceSettings}} a vyberte {{ui:workspace.appearance}}.
+5. Zapněte {{ui:workspace.codexAssistantEnabled}} a zavřete nastavení.
+6. Kliknutím na ikonu {{ui:codexAssistant.title}} otevřete chat. Pokud budete vyzváni, přihlaste se ke svému účtu ChatGPT.
+
+Ikona se zobrazí pouze tehdy, když je toto nastavení zapnuté, je připojen místní editor a Layerling najde Codex CLI. Tato místní funkce funguje pouze s vývojovým serverem na stejném počítači; na layerling.com, statickém hostingu ani v nasazení Dockeru není dostupná. Pokud ikona chybí nebo se zobrazí chyba MCP, postupujte podle [instalační příručky a řešení potíží](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

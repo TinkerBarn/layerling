@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { constants as fsConstants, promises as fs } from "fs";
+import { constants as fsConstants, promises as fs, realpathSync } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
 import { inspectLylProjectPackage, LYL_LIMITS, LYL_MEDIA_TYPE } from "@/lib/lylProject";
@@ -123,8 +123,17 @@ async function resolveFolder(root: string, requested: string | null, mustExist =
 
 /** The part of a path that goes back to the browser, always with forward slashes. */
 function folderKey(root: string, folder: string) {
-  if (folder === root) return "";
-  return path.relative(root, folder).split(path.sep).join("/");
+  // resolveFolder returns real paths for existing descendants. Resolve the
+  // configured root as well so /tmp and its macOS /private/tmp target compare
+  // in the same path space.
+  const realRoot = realpathSync(root);
+  // A renamed/deleted folder no longer resolves, but its already-validated
+  // canonical path is still needed in the response.
+  let realFolder: string;
+  try { realFolder = realpathSync(folder); }
+  catch { realFolder = path.resolve(folder); }
+  if (realFolder === realRoot) return "";
+  return path.relative(realRoot, realFolder).split(path.sep).join("/");
 }
 
 function revisionForStat(stat: { size: number; mtimeMs: number }) {

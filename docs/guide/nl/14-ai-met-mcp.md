@@ -119,3 +119,18 @@ Zo kan de AI zichzelf controleren: hij maakt iets, maakt een afbeelding, kijkt e
 Je zegt: "Bouw een ronde doos van 60 mm doorsnede, 40 mm hoog met een wand van 2,5 mm, bovenaan open, plus een plat deksel met 'Thee' in een boog erop." De AI maakt de cilinders, holt er één uit, zet de gebogen tekst op het deksel en maakt aan het eind afbeeldingen om te zien of het past.
 
 > **Tip:** Geef de AI concrete maten en vertel waar het onderdeel voor is ("houder voor een staaf van 12 mm, past op een Bambu Lab A1"). Dan neemt hij verstandiger beslissingen. En kijk mee terwijl hij bouwt: je kunt op elk moment zelf ingrijpen, want het is dezelfde editor.
+
+## ChatGPT-chat inschakelen in de editor
+
+De geïntegreerde ChatGPT-chat is een ontwikkelprototype. Je hebt een Layerling-werkkopie met deze functie nodig, Node.js `22.18` of hoger en Codex CLI. Meld je in Codex aan met je ChatGPT-account; een API-sleutel is niet nodig. De volledige installatie, met officiële downloadlinks en aparte stappen voor [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) en [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal), staat in de [installatiehandleiding](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+Zo maak je de chat zichtbaar in de editor:
+
+1. Start de Layerling-ontwikkelserver in de projectmap. Als je deze volgens de handleiding op poort `3001` start, open je [http://localhost:3001](http://localhost:3001).
+2. Open of maak een ontwerp in de editor.
+3. Klik in de bovenste werkbalk op het tandwiel in de groep {{ui:editor.group.manage}}.
+4. Open {{ui:editor.workspaceSettings}} en kies {{ui:workspace.appearance}}.
+5. Schakel {{ui:workspace.codexAssistantEnabled}} in en sluit de instellingen.
+6. Klik op het pictogram {{ui:codexAssistant.title}} om de chat te openen. Meld je aan met je ChatGPT-account als daarom wordt gevraagd.
+
+Het pictogram verschijnt alleen wanneer deze instelling aanstaat, een lokale editor is verbonden en Layerling Codex CLI kan vinden. Deze lokale functie werkt alleen met de ontwikkelserver op dezelfde computer; op layerling.com, bij statische hosting en in de Docker-implementatie is de functie uitgeschakeld. Ontbreekt het pictogram of verschijnt er een MCP-fout, raadpleeg dan de [installatie- en probleemoplossingsgids](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

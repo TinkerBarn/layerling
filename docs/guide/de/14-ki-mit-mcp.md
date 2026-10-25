@@ -9,7 +9,7 @@ Die Brücke zwischen KI-Client und Editor läuft **lokal auf deinem Rechner**. B
 
 > **Wichtig:** Die MCP-Brücke gibt es im Entwicklungsserver, den du selbst auf deinem Rechner startest. Auf layerling.com und in Installationen mit statischem Hosting ist sie abgeschaltet. Eine Kopie, die du selbst betreibst, etwa das Docker-Image auf einer NAS, kann sie mit einem Zugriffsschlüssel einschalten; siehe „Eine Kopie auf NAS oder Server“ unten.
 
-Für den integrierten Codex-Prototyp im lokalen Editor gibt es eine [separate Installations- und Architekturanleitung](../../codex-ai-assistant.md). Er verwendet denselben MCP-Server.
+Für den integrierten Codex-Prototyp im lokalen Editor gibt es eine [separate Installations- und Architekturanleitung](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md). Er verwendet denselben MCP-Server.
 
 ## Einrichten
 
@@ -125,3 +125,18 @@ Die KI kann sich damit selbst kontrollieren: Sie legt etwas an, macht ein Bild, 
 Du sagst: „Baue mir eine runde Dose mit 60 mm Durchmesser, 40 mm Höhe und 2,5 mm Wand, oben offen, dazu einen flachen Deckel, auf dem ‚Tee‘ im Bogen steht.“ Die KI legt Zylinder an, höhlt einen aus, setzt den gebogenen Text auf den Deckel und nimmt zum Schluss Bilder auf, damit sie sieht, ob es passt.
 
 > **Tipp:** Gib der KI konkrete Maße und sag ihr, wofür das Teil gedacht ist („Halter für eine 12-mm-Stange, passt auf ein Bambu Lab A1“). Dann trifft sie sinnvollere Entscheidungen. Und schau ihr beim Bauen zu: Du kannst jederzeit selbst eingreifen, denn es ist derselbe Editor.
+
+## ChatGPT Chat im Editor aktivieren
+
+Der integrierte ChatGPT Chat ist ein Entwicklungs-Prototyp. Er benötigt eine Layerling-Arbeitskopie mit dieser Funktion, Node.js `22.18` oder neuer und das Codex CLI. Die Anmeldung erfolgt mit deinem ChatGPT-Konto über Codex; ein API-Schlüssel ist dafür nicht erforderlich. Die vollständige Einrichtung mit offiziellen Downloadlinks und getrennten Schritten für [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) und [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) findest du in der [Installationsanleitung](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md).
+
+So blendest du den Chat im Editor ein:
+
+1. Starte den Layerling-Entwicklungsserver im Projektordner. Wenn du ihn wie in der Anleitung auf Port `3001` startest, öffne [http://localhost:3001](http://localhost:3001).
+2. Öffne oder erstelle einen Entwurf im Editor.
+3. Klicke in der oberen Werkzeugleiste unter **Verwalten** auf das Zahnrad.
+4. Wähle in den **Arbeitsbereich-Einstellungen** den Bereich **Darstellung**.
+5. Aktiviere **ChatGPT Chat verwenden** und schließe die Einstellungen.
+6. Klicke auf das Layerling-KI-Assistent-Symbol, um den Chat zu öffnen. Melde dich bei Aufforderung mit deinem ChatGPT-Konto an.
+
+Das Symbol erscheint nur, wenn die Einstellung aktiviert ist, ein lokaler Editor verbunden ist und Layerling das Codex CLI findet. Der integrierte Chat funktioniert nur mit dem Entwicklungsserver auf demselben Rechner; auf layerling.com sowie bei statischem Hosting und im Docker-Deployment ist diese lokale Funktion abgeschaltet. Wenn das Symbol fehlt oder eine MCP-Fehlermeldung erscheint, prüfe zuerst die [Installations- und Fehlerbehebungsschritte](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

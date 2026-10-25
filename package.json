@@ -16,7 +16,7 @@
     "fonts:japanese": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-japanese-typeface.mjs",
     "clean:cache": "node scripts/clean-next-cache.mjs",
     "predev": "node scripts/check-node-version.mjs && npm run copy:occt && npm run fonts:japanese && npm run guide",
-    "dev": "next dev apps/web",
+    "dev": "next dev apps/web --hostname localhost",
     "prebuild": "node scripts/check-node-version.mjs && npm run copy:occt && npm run fonts:japanese && npm run guide",
     "build": "next build apps/web",
     "export": "node scripts/build-static-export.mjs",

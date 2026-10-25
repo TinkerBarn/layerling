@@ -119,3 +119,18 @@ Az MI ugyanazokkal a funkciókkal dolgozik, mint te, ugyanazon az úton, mint a 
 Ezt mondod: „Építs nekem egy 60 mm átmérőjű, 40 mm magas kerek dobozt 2,5 mm-es fallal, felül nyitva, és egy lapos fedelet, rajta ívben a »Tea« felirattal.” Az MI létrehozza a hengereket, kiüregeli az egyiket, a fedélre teszi az íves szöveget, a végén pedig képeket készít, hogy lássa, illeszkedik-e.
 
 > **Tipp:** Adj az MI-nek konkrét méreteket, és mondd meg, mire való az alkatrész („tartó egy 12 mm-es rúdhoz, férjen el egy Bambu Lab A1-en”). Így értelmesebb döntéseket hoz. És figyeld, ahogy épít: bármikor magad is közbeléphetsz, mert ugyanaz a szerkesztő.
+
+## A ChatGPT-csevegés bekapcsolása a szerkesztőben
+
+A beépített ChatGPT-csevegés fejlesztői prototípus. Szükséged van egy olyan Layerling-munkapéldányra, amely tartalmazza ezt a funkciót, Node.js `22.18` vagy újabb verzióra, valamint a Codex CLI-re. A Codexben a ChatGPT-fiókoddal jelentkezz be; API-kulcs nem szükséges. A teljes beállítást, a hivatalos letöltési hivatkozásokat és a külön [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) és [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) lépéseket a [telepítési útmutatóban](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md) találod.
+
+A csevegés megjelenítése a szerkesztőben:
+
+1. Indítsd el a Layerling fejlesztői szerverét a projekt mappájában. Ha az útmutató szerint a `3001` porton indítod, nyisd meg a [http://localhost:3001](http://localhost:3001) címet.
+2. Nyiss meg vagy hozz létre egy tervet a szerkesztőben.
+3. A felső eszköztár {{ui:editor.group.manage}} csoportjában kattints a fogaskerékre.
+4. Nyisd meg a {{ui:editor.workspaceSettings}} ablakot, és válaszd a {{ui:workspace.appearance}} részt.
+5. Kapcsold be a {{ui:workspace.codexAssistantEnabled}} beállítást, majd zárd be a beállításokat.
+6. A csevegés megnyitásához kattints a {{ui:codexAssistant.title}} ikonjára. Ha a rendszer kéri, jelentkezz be a ChatGPT-fiókoddal.
+
+Az ikon csak akkor jelenik meg, ha a beállítás be van kapcsolva, csatlakozik egy helyi szerkesztő, és a Layerling megtalálja a Codex CLI-t. Ez a helyi funkció csak az ugyanazon a számítógépen futó fejlesztői szerverrel működik; a layerling.com oldalon, statikus tárhelyen és a Docker-telepítésben le van tiltva. Ha az ikon hiányzik vagy MCP-hiba jelenik meg, olvasd el a [telepítési és hibaelhárítási útmutatót](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

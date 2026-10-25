@@ -123,3 +123,18 @@ summary: كيف ينشئ مساعد ذكاء اصطناعي مثل Gemini أو C
 تقول: "ابنِ لي علبة مستديرة قطرها 60 مم وارتفاعها 40 مم بجدار 2.5 مم، مفتوحة من الأعلى، مع غطاء مسطح عليه كلمة 'Tea' مكتوبة على قوس." فينشئ الذكاء الاصطناعي الأسطوانات، ويفرّغ إحداها، ويضع النص المنحني على الغطاء، ويلتقط صورًا في النهاية ليرى هل يتطابق كل شيء.
 
 > **نصيحة:** أعطِ الذكاء الاصطناعي أبعادًا محددة وأخبره بالغرض من القطعة ("حامل لقضيب 12 مم، يناسب Bambu Lab A1"). فيتخذ عندها قرارات أكثر منطقية. وراقبه وهو يبني: يمكنك التدخل بنفسك في أي وقت، لأنه المحرر نفسه.
+
+## تفعيل دردشة ChatGPT في المحرر
+
+دردشة ChatGPT المدمجة نموذج أولي للتطوير. تحتاج إلى نسخة عمل من Layerling تتضمن هذه الميزة، وإلى Node.js بالإصدار `22.18` أو أحدث، وإلى Codex CLI. سجّل الدخول إلى Codex باستخدام حساب ChatGPT؛ لا تحتاج إلى مفتاح API. يتضمن [دليل التثبيت](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md) الإعداد الكامل وروابط التنزيل الرسمية وخطوات منفصلة لكل من [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) و[macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal).
+
+لإظهار الدردشة في المحرر:
+
+1. شغّل خادم تطوير Layerling من مجلد المشروع. إذا شغّلته على المنفذ `3001` كما في الدليل، فافتح [http://localhost:3001](http://localhost:3001).
+2. افتح تصميمًا في المحرر أو أنشئ تصميمًا جديدًا.
+3. في شريط الأدوات العلوي، انقر على رمز الترس ضمن مجموعة {{ui:editor.group.manage}}.
+4. افتح {{ui:editor.workspaceSettings}} واختر {{ui:workspace.appearance}}.
+5. فعّل {{ui:workspace.codexAssistantEnabled}} ثم أغلق الإعدادات.
+6. انقر على أيقونة {{ui:codexAssistant.title}} لفتح الدردشة. إذا طُلب منك ذلك، فسجّل الدخول بحساب ChatGPT.
+
+لا تظهر الأيقونة إلا عند تفعيل هذا الإعداد، واتصال محرر محلي، وتمكّن Layerling من العثور على Codex CLI. لا تعمل هذه الميزة المحلية إلا مع خادم التطوير على الكمبيوتر نفسه؛ وهي معطّلة على layerling.com والاستضافة الثابتة ونشر Docker. إذا لم تظهر الأيقونة أو ظهر خطأ MCP، فراجع [دليل التثبيت واستكشاف الأخطاء وإصلاحها](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung).

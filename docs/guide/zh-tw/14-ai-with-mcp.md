@@ -123,3 +123,18 @@ AI 使用的是與你相同的功能，走的也是你在編輯器中操作時�
 你說：「幫我做一個直徑 60 mm、高 40 mm、壁厚 2.5 mm、頂部開口的圓盒，再加一個平的蓋子，上面用弧形排列寫出『Tea』。」AI 會建立圓柱、把其中一個抽殼、把彎曲的文字放到蓋子上，最後拍幾張圖片看看合不合。
 
 > **提示：** 給 AI 具體的尺寸，並告訴它零件的用途（「12 mm 圓桿的固定座，適用 Bambu Lab A1」）。這樣它做的決定會更合理。也看著它建立：你隨時都能自己接手，因為用的是同一個編輯器。
+
+## 在編輯器中啟用 ChatGPT 聊天
+
+整合的 ChatGPT 聊天是開發原型。你需要包含此功能的 Layerling 工作副本、Node.js `22.18` 或更新版本，以及 Codex CLI。在 Codex 中使用你的 ChatGPT 帳戶登入；不需要 API 金鑰。完整安裝步驟、官方下載連結，以及分別適用於 [Windows](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#windows-powershell) 和 [macOS](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#macos-terminal) 的說明，請參閱[安裝指南](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md)。
+
+在編輯器中顯示聊天視窗：
+
+1. 在專案資料夾中啟動 Layerling 開發伺服器。若依照指南使用 `3001` 連接埠，請開啟 [http://localhost:3001](http://localhost:3001)。
+2. 在編輯器中開啟或建立一個設計。
+3. 在頂端工具列的 {{ui:editor.group.manage}} 群組中，按一下齒輪按鈕。
+4. 開啟 {{ui:editor.workspaceSettings}}，選擇 {{ui:workspace.appearance}}。
+5. 啟用 {{ui:workspace.codexAssistantEnabled}}，然後關閉設定。
+6. 按一下 {{ui:codexAssistant.title}} 圖示以開啟聊天視窗。如有提示，請使用 ChatGPT 帳戶登入。
+
+只有在此設定已啟用、本機編輯器已連線且 Layerling 找到 Codex CLI 時，圖示才會顯示。此本機功能僅適用於在同一台電腦上執行的開發伺服器；layerling.com、靜態託管和 Docker 部署均未啟用此功能。如果圖示未顯示或出現 MCP 錯誤，請參閱[安裝與疑難排解指南](https://github.com/henmedia/layerling/blob/main/docs/codex-ai-assistant.md#aktualisierung-und-fehlerbehebung)。

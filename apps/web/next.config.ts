@@ -31,6 +31,20 @@ const nextConfig: NextConfig = {
   // running dev server, which also breaks API routes such as project snapshots.
   distDir: isStaticExport ? ".next-export" : process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   allowedDevOrigins: ["localhost", "127.0.0.1", ...extraAllowedDevOrigins],
+  ...(!isStaticExport
+    ? {
+        async headers() {
+          if (process.env.NODE_ENV !== "development") return [];
+          return [{
+            source: "/:path*",
+            headers: [
+              { key: "X-Frame-Options", value: "DENY" },
+              { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+            ],
+          }];
+        },
+      }
+    : {}),
   env: {
     NEXT_PUBLIC_STATIC_EXPORT: isStaticExport ? "true" : "false",
     NEXT_PUBLIC_OCCT_RUNTIME_VERSION: occtRuntimeVersion,
