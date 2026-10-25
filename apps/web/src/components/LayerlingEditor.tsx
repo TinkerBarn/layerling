@@ -122,6 +122,7 @@ import { applySketchCorners } from "@/lib/sketchFilletChamfer";
 import { revolveAxisShift } from "@/lib/revolveAxis";
 import { buildSketchRevolveMesh, DEFAULT_SKETCH_REVOLVE_SETTINGS, normalizeSketchRevolveSettings, type SketchRevolveMesh } from "@/lib/sketchRevolve";
 import { AppFooter } from "@/components/AppFooter";
+import { CodexAssistant } from "@/components/CodexAssistant";
 import { useFileAccept } from "@/lib/fileAccept";
 import { exportLylProject, LYL_CREATED_WITH_VERSION, LYL_MEDIA_TYPE } from "@/lib/lylProject";
 import { isBuildMessage, reportWorkerBuild } from "@/lib/buildStamp";
@@ -13771,6 +13772,7 @@ export function LayerlingEditor({
           </button>
         </p>
       ) : null}
+      {process.env.NODE_ENV === "development" ? <CodexAssistant /> : null}
       <pre data-codex-state hidden>
         {debugState}
       </pre>

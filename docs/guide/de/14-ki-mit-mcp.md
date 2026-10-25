@@ -9,6 +9,8 @@ Die Brücke zwischen KI-Client und Editor läuft **lokal auf deinem Rechner**. B
 
 > **Wichtig:** Die MCP-Brücke gibt es im Entwicklungsserver, den du selbst auf deinem Rechner startest. Auf layerling.com und in Installationen mit statischem Hosting ist sie abgeschaltet. Eine Kopie, die du selbst betreibst, etwa das Docker-Image auf einer NAS, kann sie mit einem Zugriffsschlüssel einschalten; siehe „Eine Kopie auf NAS oder Server“ unten.
 
+Für den integrierten Codex-Prototyp im lokalen Editor gibt es eine [separate Installations- und Architekturanleitung](../../codex-ai-assistant.md). Er verwendet denselben MCP-Server.
+
 ## Einrichten
 
 1. Lade layerling von [GitHub](https://github.com/henmedia/layerling) und starte es im Projektordner mit `npm run dev`. Node.js muss installiert sein. Unter Windows erledigt das die Schnellstart-Zeile in der README.

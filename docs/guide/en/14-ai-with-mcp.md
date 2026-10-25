@@ -9,6 +9,8 @@ The bridge between AI client and editor runs **locally on your computer**. Keep 
 
 > **Important:** The MCP bridge exists in the development server that you start yourself on your computer. On layerling.com and in installations with static hosting it is switched off. A copy you host yourself, such as the Docker image on a NAS, can switch it on with an access token; see "A copy on a NAS or server" below.
 
+For the embedded Codex assistant prototype in the local editor, see the [separate setup and architecture guide](../../codex-ai-assistant.md). It uses the same MCP server.
+
 ## Setting up
 
 1. Get layerling from [GitHub](https://github.com/henmedia/layerling) and start it in the project folder with `npm run dev`. Node.js must be installed. On Windows the quick-start line in the README takes care of that.
