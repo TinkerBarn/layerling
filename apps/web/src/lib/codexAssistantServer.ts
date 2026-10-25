@@ -58,7 +58,13 @@ class CodexAppServer {
         this.emit("status", { method: message.method, params: message.params });
       }
     });
-    child.on("error", (error) => this.failPending(error));
+    child.on("error", (error) => {
+      this.child = null;
+      const processError = error as NodeJS.ErrnoException;
+      this.failPending(processError.code === "ENOENT"
+        ? new Error("Codex CLI was not found. Install Codex CLI or set CODEX_EXECUTABLE to its path.")
+        : error);
+    });
     child.on("exit", (code) => {
       this.child = null;
       this.turnId = null;
