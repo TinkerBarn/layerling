@@ -16,13 +16,13 @@ The repository documents a Windows quick start and Docker use on macOS/Linux, bu
 
 | Layerling host | Browser | Codex integration result | Notes |
 | --- | --- | --- | --- |
-| macOS | Browser unspecified in existing manual note | Existing manual smoke test recorded; not repeated | CLI `0.163.0`; not a broad browser test |
+| macOS | Safari | User reports live manual testing with Codex in Safari on macOS after this audit; not independently repeated here | Manual use is confirmed by the user; exact step-by-step coverage was not recorded |
 | Windows | Any | Not tested | CLI path/PATHEXT handling is implemented, not validated on Windows |
 | Linux | Any | Not tested | Local Codex CLI and browser were not available for validation |
 | Any | Chrome / Edge | Not tested for assistant UI | The main README documents these browsers for certain other file/font features; that is not an assistant compatibility result |
-| Any | Firefox / Safari | Not tested for assistant UI | Speech input additionally depends on browser Web Speech API support |
+| Any | Firefox | Not tested for assistant UI | Speech input additionally depends on browser Web Speech API support |
 
-No real-browser visual/layout, zoom, keyboard/mouse, resize, speech, authentication, or browser-switch test was run in this audit. The 522 CAD E2E tests below exercise editor behavior in the repository test harness, not desktop browser integration.
+No real-browser visual/layout, zoom, keyboard/mouse, resize, speech, authentication, or browser-switch test was run as part of this audit. After the audit, the user reported live manual testing of the integration with Codex on macOS in Safari. This is user-reported manual validation; exact scenario coverage was not independently recorded or repeated here. The 522 CAD E2E tests below exercise editor behavior in the repository test harness, not desktop browser integration.
 
 ## MCP and feature detection
 
@@ -54,7 +54,7 @@ Updated [codex-ai-assistant.md](codex-ai-assistant.md) with setup, use, model/ef
 | Production build (`npm run build`) | Passed |
 | Offline dependency audit (`npm audit --offline`) | 0 findings in the local cache; current registry advisories could not be refreshed (`ENOTFOUND registry.npmjs.org`) |
 | `git diff --check` | Passed |
-| Cross-platform/browser/manual visual integration | Not tested |
+| Cross-platform/browser/manual visual integration | Not tested in this audit; user later reported live manual testing with Codex on macOS/Safari |
 
 The initial unit run exposed a macOS `/tmp` versus `/private/tmp` mismatch in Shared Projects response paths. `folderKey` now compares canonical paths, preserving its existing containment checks. The focused Shared Projects tests and final full suite pass.
 
